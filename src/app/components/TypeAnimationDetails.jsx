@@ -1,6 +1,6 @@
 import { TypeAnimation } from "react-type-animation";
 
-const TypeAnimationDetails = ({children} : {children: string}) => {
+const TypeAnimationDetails = ({children}) => {
   return (
     <TypeAnimation
       sequence={[

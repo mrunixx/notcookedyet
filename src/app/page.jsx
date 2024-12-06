@@ -4,9 +4,9 @@ import TypeAnimationLandingText from "./components/TypeAnimationText";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col gap-5 justify-center items-center">
+    <div className="main-page">
       <div>
-        <p className="text-5xl">not cooked yet.</p>
+        <p className="website-name">not cooked yet.</p>
         <TypeAnimationLandingText />
       </div>
       <GetStartedBtn />
