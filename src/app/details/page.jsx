@@ -4,11 +4,11 @@ import TypeAnimationDetails from "../components/TypeAnimationDetails";
 import Link from "next/link";
 
 const Identity = () => {
-  const [firstName, setFirstName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [github, setGithub] = useState("");
+  const [firstName, setFirstName] = useState(JSON.parse(localStorage.getItem("personalDetails")).firstName || "");
+  const [surname, setSurname] = useState(JSON.parse(localStorage.getItem("personalDetails")).surname || "");
+  const [email, setEmail] = useState(JSON.parse(localStorage.getItem("personalDetails")).email || "");
+  const [number, setNumber] = useState(JSON.parse(localStorage.getItem("personalDetails")).number || "");
+  const [github, setGithub] = useState(JSON.parse(localStorage.getItem("personalDetails")).github || "");
 
   useEffect(() => {
     const personalDetails = {
