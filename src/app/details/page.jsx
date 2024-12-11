@@ -49,7 +49,7 @@ const Identity = () => {
         Github
         <input type="text" name="github" value={github} onChange={(e) => setGithub(e.target.value)}/>
       </label>
-      <Link href={"/"}>
+      <Link href={"/details/academics"}>
         <button className="glowing-button">Continue</button>
       </Link>
     </div>
