@@ -49,9 +49,9 @@ const Academics = () => {
     setCourse("");
   };
 
-  const handleCourseRemove = () => {
+  const handleCourseRemove = (value) => {
     const newCourses = [...courses];
-    const index = newCourses.indexOf(course);
+    const index = newCourses.indexOf(value);
     newCourses.splice(index, 1);
 
     setCourses(newCourses);
@@ -113,7 +113,7 @@ const Academics = () => {
           </button>
         </div>
       </div>
-      <Link href={"/create"}>
+      <Link href={"/details/projects"}>
         <button className="glowing-button" onClick={handleContinue}>
           Continue
         </button>
