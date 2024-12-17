@@ -1,32 +1,38 @@
 "use client";
-import MDEditor from "@uiw/react-md-editor";
+
+import MarkdownEditor from "@uiw/react-markdown-editor";
 import MarkdownPreview from "@uiw/react-markdown-preview";
 import { useState } from "react";
+import SplitPane from "react-split-pane";
 
 const ResumeBuilderPage = () => {
   const [value, setValue] = useState("");
 
   return (
-    <div className="main-page">
-      <h1 style={{ fontSize: "2em" }}>Create Your Resume</h1>
-      <div className="main-page-horizontal">
-        <div className="main-left">
-          <div data-color-mode="light">
-            <MDEditor
-              height={"85vh"}
-              value={value}
-              onChange={setValue}
-              components={"textarea"}
-              preview="edit"
-            />
-          </div>
+    <div className="main-page" style={{ height: "100vh", display: "flex" }}>
+      <SplitPane split="vertical" defaultSize="50%" minSize={300} maxSize={-300}>
+        <div className="w-full editor p-[2em]" style={{ height: "100%" }}>
+          <MarkdownEditor 
+            source={value}
+            height="90vh"
+            showToolbar={false}
+            onChange={(val) => setValue(val)}
+          />
         </div>
-        <div className="main-right">
-          <div data-color-mode="light">
-            <MarkdownPreview height={"85vh"} source={value} />
-          </div>
+        <div className="w-full preview" style={{ height: "100%", padding: "2em 6em"}}>
+          <MarkdownPreview
+            source={value}
+            style={{
+              backgroundColor: "white",
+              color: "black",
+              padding: "2em",
+              overflow: "auto",
+              fontSize: "14px",
+              height: "100%"
+            }}
+          />
         </div>
-      </div>
+      </SplitPane>
     </div>
   );
 };
