@@ -39,14 +39,12 @@ const ResumeBuilderPage = () => {
 
   ## PROJECTS
 
-  ## EXPERIENCE 
+  ## EXPERIENCE & EXTRACURRICULARS 
 
   ## TECHINCAL SKILLS 
 
   - <strong>Languages</strong>: Please input application relevant languages you know here
   - <strong>Technologies</strong>: Please input application relevant technologies here
-
-  ## EXTRACURRICULARS
 
 `);
   return (
