@@ -64,7 +64,7 @@ const Academics = () => {
   };
 
   return (
-    <div className="main-page">
+    <div className="main-page w-[50%]">
       <TypeAnimationDetails>Let's now talk academics!</TypeAnimationDetails>
       <label className="details-input">
         University

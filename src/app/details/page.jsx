@@ -37,9 +37,9 @@ const Identity = () => {
   };
 
   return (
-    <div className="main-page">
+    <div className="main-page w-[50%]">
       <TypeAnimationDetails>Let's get to know you first!</TypeAnimationDetails>
-      <div className="name-input-div">
+      <div className="name-input-div w-full">
         <label className="details-input">
           First Name
           <input

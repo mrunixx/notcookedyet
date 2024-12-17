@@ -37,6 +37,12 @@ const Projects = () => {
     setProjects(newProjects);
   };
 
+  const handleEnter = (e) => {
+    if (e.key === "Enter") {
+      handleProjectAdd();
+    }
+  }
+
   useEffect(() => {
     localStorage.setItem("projects", JSON.stringify(projects));
   }, [projects]);
@@ -64,6 +70,7 @@ const Projects = () => {
             className="w-full"
             value={projectName}
             onChange={(e) => setProjectName(e.target.value)}
+            onKeyDown={handleEnter}
             placeholder="e.g notcookedyet"
           />
           <button
