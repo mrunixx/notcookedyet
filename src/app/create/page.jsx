@@ -6,22 +6,10 @@ import { useState } from "react";
 import SplitPane from "react-split-pane";
 
 const ResumeBuilderPage = () => {
-  const [personalDetails, setPersonalDetails] = useState(() => {
-    const data = JSON.parse(localStorage.getItem("personalDetails"));
-    return data ? data : {};
-  });
-  const [academicDetails, setAcademicDetails] = useState(() => {
-    const data = JSON.parse(localStorage.getItem("academicDetails"));
-    return data ? data : {};
-  });
-  const [projects, setProjects] = useState(() => {
-    const data = JSON.parse(localStorage.getItem("projects"));
-    return data ? data : [];
-  });
-  const [experiences, setExperiences] = useState(() => {
-    const data = JSON.parse(localStorage.getItem("experiences"));
-    return data ? data : [];
-  });
+  const personalDetails = JSON.parse(localStorage.getItem("personalDetails")) || {};
+  const academicDetails = JSON.parse(localStorage.getItem("academicDetails")) || {};
+  // const projects = JSON.parse(localStorage.getItem("projects")) || [];
+  // const experiences = JSON.parse(localStorage.getItem("experiences")) || [];
 
   const [value, setValue] = useState(`
   <div style="text-align: center;">
