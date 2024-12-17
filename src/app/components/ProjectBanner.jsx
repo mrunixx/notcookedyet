@@ -14,7 +14,7 @@ const ProjectBanner = ({ name, url, onClick }) => {
         localStorage.setItem("projects", JSON.stringify(projects));
       } 
     }
-  }, [input]);
+  }, [input, name]);
 
   return (
     <div className="course-banner flex">

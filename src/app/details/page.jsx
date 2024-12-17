@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TypeAnimationDetails from "../components/TypeAnimationDetails";
 import Link from "next/link";
 
@@ -38,7 +38,7 @@ const Identity = () => {
 
   return (
     <div className="main-page w-[50%]">
-      <TypeAnimationDetails>Let's get to know you first!</TypeAnimationDetails>
+      <TypeAnimationDetails>Let&apos;s get to know you first!</TypeAnimationDetails>
       <div className="name-input-div w-full">
         <label className="details-input">
           First Name

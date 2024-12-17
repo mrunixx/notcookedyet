@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, use, useDebugValue } from "react";
+import { useState } from "react";
 import TypeAnimationDetails from "../../components/TypeAnimationDetails";
 import Link from "next/link";
 import UniversityAutoComplete from "../../components/UniversityAutoComplete";
@@ -65,7 +65,7 @@ const Academics = () => {
 
   return (
     <div className="main-page w-[50%]">
-      <TypeAnimationDetails>Let's now talk academics!</TypeAnimationDetails>
+      <TypeAnimationDetails>Let&apos;s now talk academics!</TypeAnimationDetails>
       <label className="details-input">
         University
         <UniversityAutoComplete value={universityName} setValue={setUniversityName} />
