@@ -19,7 +19,6 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Only render content inside <body> */}
         <ClientOnly>{children}</ClientOnly>
       </body>
     </html>

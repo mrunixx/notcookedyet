@@ -16,7 +16,7 @@ const Academics = () => {
   });
   const [courses, setCourses] = useState(() => {
     const storedData = localStorage.getItem("academicDetails");
-    return storedData ? JSON.parse(storedData).courses: "";
+    return storedData ? JSON.parse(storedData).courses: [];
   });
   const [course, setCourse] = useState("");
 
