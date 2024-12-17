@@ -17,6 +17,7 @@ const ResumeBuilderPage = () => {
             height="90vh"
             showToolbar={false}
             onChange={(val) => setValue(val)}
+            enablePreview={false}
           />
         </div>
         <div className="w-full preview" style={{ height: "100%", padding: "2em 6em"}}>
