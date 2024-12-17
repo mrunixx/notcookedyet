@@ -89,7 +89,7 @@ const Academics = () => {
       <div className="details-input gap-2">
         <p className="mb-2">
           High Achieving Courses
-          <span className="form-hint">Limit to 3 based on application.</span>
+          <span className="form-hint"> Limit to 3 based on application.</span>
         </p>
         {courses.map((course, index) => {
           return <CourseBanner key={index} value={course} onClick={handleCourseRemove} />;

@@ -1,15 +1,63 @@
 "use client";
 
 import TypeAnimationDetails from "../../components/TypeAnimationDetails";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import ExperienceBanner from "../../components/ExperienceBanner";
+import Link from "next/link";
 
 const Experience = () => {
-  const [experiences, setExperiences] = useState([]);
+  const [experiences, setExperiences] = useState(() => {
+    const localData = JSON.parse(localStorage.getItem("experiences"));
+    return localData ? localData : [];
+  });
   const [ongoing, setOngoing] = useState(false);
+  const [org, setOrg] = useState("");
+  const [role, setRole] = useState("");
+  const [dateStarted, setDateStarted] = useState("");
+  const [dateEnded, setDateEnded] = useState("");
 
   const handleOngoingCheckbox = (e) => {
     setOngoing(e.target.checked);
   };
+
+  const handleAddExperience = () => {
+    const experience = {
+      org: org,
+      role: role,
+      ongoing: ongoing,
+      dateStarted: dateStarted,
+      dateEnded: dateEnded,
+    };
+
+    const newExperiences = [...experiences];
+    const index = newExperiences.find((e) => e.org === org);
+    if (index) {
+      return;
+    }
+
+    newExperiences.push(experience);
+
+    setExperiences(newExperiences);
+    setOrg("");
+    setRole("");
+    setDateEnded("");
+    setDateStarted("");
+    setOngoing(false);
+  };
+
+  const handleRemoveExperience = (org) => {
+    const newExperiences = [...experiences];
+    const index = newExperiences.findIndex((exp) => exp.org === org);
+
+    if (index !== -1) {
+      newExperiences.splice(index, 1);
+      setExperiences(newExperiences);
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("experiences", JSON.stringify(experiences));
+  }, [experiences]);
 
   return (
     <div className="main-page-horizontal">
@@ -24,14 +72,31 @@ const Experience = () => {
         <div className="flex flex-col">
           Experience / Extra-curricular
           <span className="form-hint">
-            It is important that we include experience that provide some value to the recruiters
-            rather than all of your experiences.
+            It is important that we only include experiences that provide some value to the
+            recruiters rather than all of your experiences.
           </span>
         </div>
         <div className="details-input">
           <label className="flex flex-col justify-center w-full my-2">
             Company / Organisation
-            <input type="text" name="project-input" className="w-full" placeholder="e.g CompClub" />
+            <input
+              type="text"
+              name="project-input"
+              className="w-full"
+              placeholder="e.g CompClub"
+              value={org}
+              onChange={(e) => setOrg(e.target.value)}
+            />
+          </label>
+          <label className="flex items-center justify-end gap-2 w-full">
+            <input
+              type="checkbox"
+              name="ongoing"
+              id="ongoing-checkbox"
+              checked={ongoing}
+              onChange={handleOngoingCheckbox}
+            />
+            Ongoing
           </label>
           <label className="flex flex-col justify-center w-full my-2">
             Role
@@ -39,41 +104,55 @@ const Experience = () => {
               type="text"
               name="project-input"
               className="w-full"
+              value={role}
               placeholder="e.g Director of Initiatives"
+              onChange={(e) => setRole(e.target.value)}
             />
           </label>
           <label className="flex flex-col justify-center w-full my-2">
-            <div className="flex justify-between items-center">
-              Date
-              <label className="flex items-center justify-end gap-2 w-full">
-                <input
-                  type="checkbox"
-                  name="ongoing"
-                  id="ongoing-checkbox"
-                  value={ongoing}
-                  onChange={handleOngoingCheckbox}
-                />
-                Ongoing
-              </label>
-            </div>
+            <div className="flex justify-between items-center">Date</div>
             <div className="date-inputs flex justify-between w-full">
-              <input type="date" name="data-started" id="date-input" />
+              <input
+                type="month"
+                name="data-started"
+                id="date-input"
+                value={dateStarted}
+                onChange={(e) => setDateStarted(e.target.value)}
+              />
               {!ongoing && (
                 <>
                   &rarr;
-                  <input type="date" name="data-ended" id="date-input" />
+                  <input
+                    type="month"
+                    name="data-ended"
+                    id="date-input"
+                    value={dateEnded}
+                    onChange={(e) => setDateEnded(e.target.value)}
+                  />
                 </>
               )}
             </div>
           </label>
-          <button className="trash-btn w-full rounded-md mild-glowing-button h-[2em] self-end">
+          <button
+            className="trash-btn w-full rounded-md mild-glowing-button h-[2em] self-end"
+            onClick={handleAddExperience}
+          >
             &#43;
           </button>
+          <Link href="/create" className="flex justify-end my-2">
+            <button className="glowing-button">Continue</button>
+          </Link>
         </div>
       </div>
       <div className="main-right">
         {experiences.map((experience, index) => {
-          return <ExperienceBanner key={index} experience={experience} />;
+          return (
+            <ExperienceBanner
+              key={index}
+              experience={experience}
+              onClick={handleRemoveExperience}
+            />
+          );
         })}
       </div>
     </div>

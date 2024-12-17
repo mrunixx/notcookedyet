@@ -62,7 +62,7 @@ const Identity = () => {
       <label className="details-input">
         <p>
           Email
-          <span className="form-hint">Make sure the email is professional!</span>
+          <span className="form-hint"> Make sure the email is professional!</span>
         </p>
         <input type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </label>

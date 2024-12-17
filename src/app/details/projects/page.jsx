@@ -51,8 +51,8 @@ const Projects = () => {
       </p>
       <div className="details-input gap-2">
         <p>
-          Projects
-          <span className="form-hint">Use 2-3 projects relating to your application.</span>
+          Projects 
+          <span className="form-hint"> Use 2-3 projects relating to your application.</span>
         </p>
         {projects.map((p, index) => {
           return <ProjectBanner key={index} name={p.name} url={p.url} onClick={handleProjectDelete} />;
