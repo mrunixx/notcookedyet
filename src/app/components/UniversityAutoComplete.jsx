@@ -10,7 +10,11 @@ const UniversityAutoComplete = ({ value, setValue }) => {
   const findUniversitySuggestion = (phrase) => {
     return new Promise((resolve, reject) => {
       axios
-        .get(`http://universities.hipolabs.com/search?name=${phrase}&country=australia`)
+        .get(`http://universities.hipolabs.com/search?name=${phrase}&country=australia`, {
+          headers: {
+            'Access-Control-Allow-Origin': '*', // Use your domain here instead of '*'
+          }
+        })
         .then((result) => {
           const found = result.data.find((university) => {
             return university.name.indexOf(phrase) === 0;
