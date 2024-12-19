@@ -2,7 +2,7 @@
 
 import MarkdownEditor from "@uiw/react-markdown-editor";
 import MDPreview from "../components/MarkdownPreview";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SplitPane from "react-split-pane";
 
 const ResumeBuilderPage = () => {
@@ -74,7 +74,9 @@ const ResumeBuilderPage = () => {
     return mdStrings.join("\n");
   };
 
-  const [value, setValue] = useState(`
+  const [value, setValue] = useState(() => {
+    const data = localStorage.getItem("resume");
+    return data ? data : `
 # ${personalDetails.firstName + " "} ${personalDetails.surname}
 
 <div class="headerInfo">
@@ -111,7 +113,13 @@ ${createExtracurricularMDText()}
 **Languages**: Please input application relevant languages you know here
 
 **Technologies**: Please input application relevant technologies here
-  `);
+  ` 
+  });
+
+
+  useEffect(() => {
+    localStorage.setItem("resume", value);
+  }, [value])
 
   return (
     <div className="main-page" style={{ height: "100vh", display: "flex" }}>
