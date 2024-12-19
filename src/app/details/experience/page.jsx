@@ -11,6 +11,7 @@ const Experience = () => {
     return localData ? localData : [];
   });
   const [ongoing, setOngoing] = useState(false);
+  const [extracurricular, setExtracurricular] = useState(false);
   const [org, setOrg] = useState("");
   const [role, setRole] = useState("");
   const [dateStarted, setDateStarted] = useState("");
@@ -20,11 +21,16 @@ const Experience = () => {
     setOngoing(e.target.checked);
   };
 
+  const handleExtraCheckbox = (e) => {
+    setExtracurricular(e.target.checked);
+  };
+  
   const handleAddExperience = () => {
     const experience = {
       org: org,
       role: role,
       ongoing: ongoing,
+      extracurricular: extracurricular,
       dateStarted: dateStarted,
       dateEnded: dateEnded,
     };
@@ -87,6 +93,16 @@ const Experience = () => {
               value={org}
               onChange={(e) => setOrg(e.target.value)}
             />
+          </label>
+          <label className="flex items-center justify-end gap-2 w-full">
+            <input
+              type="checkbox"
+              name="ongoing"
+              id="ongoing-checkbox"
+              checked={extracurricular}
+              onChange={handleExtraCheckbox}
+            />
+            Extra-Curricular 
           </label>
           <label className="flex items-center justify-end gap-2 w-full">
             <input

@@ -1,6 +1,6 @@
 const ExperienceBanner = ({ experience, onClick }) => {
   const formatMonthYear = (date) => {
-    if (!date) return "";
+    if (!date) return "Ongoing";
     const [year, month] = date.split("-");
     const dateObj = new Date(year, month - 1);
     return dateObj.toLocaleString("default", { month: "short", year: "numeric" });
