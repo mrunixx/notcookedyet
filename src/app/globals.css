@@ -187,3 +187,8 @@ button:focus {
 .Resizer.disabled:hover {
   border-color: transparent;
 }
+
+.scrollable::-webkit-scrollbar {
+  display: none;
+  scroll-behavior: smooth;
+}
