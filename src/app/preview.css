@@ -25,7 +25,6 @@
   display: flex;
   font-size: 15px;
   padding: 0;
-  justify-content: space-between;
   margin: 6px 0;
 }
 
@@ -57,6 +56,10 @@
   list-style-type: none;
 }
 
+.preview li {
+  list-style-type: '- ';
+}
+
 .preview .headerInfo > ul >li:not(:last-child) {
   margin-right: 8px;
 }
@@ -68,4 +71,9 @@
 
 .preview a {
   color: black;
+}
+
+.preview .project-url {
+  margin-left: auto;
+  font-weight: 500;
 }
