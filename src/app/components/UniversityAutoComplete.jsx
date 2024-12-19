@@ -7,14 +7,11 @@ const UniversityAutoComplete = ({ value, setValue }) => {
   const stateRef = useRef();
   stateRef.current = value;
 
+  // university auto correct does not currently work on secure https 
   const findUniversitySuggestion = (phrase) => {
     return new Promise((resolve, reject) => {
       axios
-        .get(`https://universities.hipolabs.com/search?name=${phrase}&country=australia`, {
-          headers: {
-            'Access-Control-Allow-Origin': '*', // Use your domain here instead of '*'
-          }
-        })
+        .get(`http://universities.hipolabs.com/search?name=${phrase}&country=australia`)
         .then((result) => {
           const found = result.data.find((university) => {
             return university.name.indexOf(phrase) === 0;
